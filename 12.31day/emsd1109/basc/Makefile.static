@@ -1,0 +1,7 @@
+static_myinfo_test:myinfo_test.o myinfo.o
+	gcc -o bin/static_myinfo_test obj/myinfo_test.o -Llib -lstaticmyinfo
+myinfo_test.o:include/myinfo.h src/myinfo_test.c 
+	gcc -o obj/myinfo_test.o -Iinclude -c src/myinfo_test.c
+myinfo.o:include/myinfo.h src/myinfo.c
+	gcc -o obj/myinfo.o -Iinclude -c src/myinfo.c
+	ar rcs lib/libstaticmyinfo.a obj/myinfo.o
